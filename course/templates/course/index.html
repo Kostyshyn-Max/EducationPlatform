@@ -1,15 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        {% for lesson in lessons_list %}
-            <a href="/lessons/{{lesson.id}}"><h1>{{lesson.name}}</h1></a>
-            <p>{{lesson.theory}}</p>
-        {% endfor %}
-    </body>
-</html>
+{% extends "course/base.html" %}
+
+{% block title %}Start learng Python{% endblock %}
+
+{% block topic %}Lessons{% endblock %}
+
+{% block sidebar %} {% endblock %}
+
+{% block content %}
+    {% for lesson in lessons_list %}
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h3>{{lesson.name}}</h3>
+                <p class="lead">{{lesson.theory|truncatewords:30 }}</p>
+                <hr class="my-2">
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="/lessons/{{lesson.id}}" role="button">Go to lesson</a>
+                </p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
