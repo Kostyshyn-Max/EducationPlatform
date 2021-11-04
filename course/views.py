@@ -1,6 +1,7 @@
+from django.db.models.query import Prefetch
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Lesson, Exercise
+from .models import Lesson, Exercise, Module
 from .forms import NewUserForm
 from django.contrib.auth import login
 from django.contrib import messages
@@ -10,8 +11,8 @@ from django.contrib.auth import login, authenticate
 # Create your views here.
 def index(request):
     lessons_list = Lesson.objects.all()
-    context = {'lessons_list': lessons_list}
-    return render(request, 'course/index.html', context)
+    module_list = Module.objects.all()
+    return render(request, 'course/index.html', {'lessons_list': lessons_list, 'module_list': module_list})
 
 def detail(request, lesson_id):
     lesson = Lesson.objects.filter(id = lesson_id)[0]
@@ -24,7 +25,8 @@ def exercises(request, lesson_id):
 
 def exercise_detail(request, exercise_id):
     exercise = Exercise.objects.filter(id = exercise_id)[0]
-    return render(request, 'course/exercise/detail.html', {'exercise': exercise})
+    inp_value = request.POST.get('code', '')
+    return render(request, 'course/exercise/detail.html', {'exercise': exercise, 'inp_value':inp_value})
 
 def register_request(request):
 	if request.method == "POST":

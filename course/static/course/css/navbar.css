@@ -72,4 +72,5 @@ nav {
 }
 .jumbotron {
     background-color:#333435 !important;
+    border-radius: 6px;
 }

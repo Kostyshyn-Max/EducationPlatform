@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        <h1>{{ lesson.name }}</h1>
+{% extends 'course/base.html' %}
+
+{% block topic %}<center>Exercises</center>{% endblock %}
+ 
+{% block content %}
+
+    <div class="jumbotron jumbotron-fluid">
+        <center><h1 style="font-size: 48px;">{{ lesson.name }}</h1></center>
         {% for exercise in exercises_list%}
-            <a href="/lessons/exercises/{{exercise.id}}"><h2>{{exercise.name}}</h2></a>
+            <div class="container">
+                <a href="/lessons/exercises/{{exercise.id}}"><h3>{{exercise.name}}</h3></a>
+            </div>
         {% endfor %}
-    </body>
-</html>
+    </div>
+{% endblock %}

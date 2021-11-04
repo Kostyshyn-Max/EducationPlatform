@@ -3,8 +3,9 @@
 {% block title %}{{ lesson.name}}{% endblock %}
 
 
-{% block topic %}{{ lesson.name}}{% endblock %}
+{% block topic %}<center>{{ lesson.name}}</center>{% endblock %}
 
 {% block content %}
-    {{ lesson.theory }}
+    <p style="font-size: 20;">{{ lesson.theory|safe }}</p>
+    <a class="btn btn-primary btn-lg" href="/lessons/{{lesson.id}}/exercises" role="button">Перейти до завдань</a>
 {% endblock %}

@@ -1,0 +1,33 @@
+
+.comment{
+  color: #10e734;
+}
+
+code{
+  color: rgb(247, 211, 7);
+  display: block;
+  margin: 1rem 1rem 1rem 10%;
+  width: 50%;
+  white-space: break-spaces;
+  background-color: #1c1c1c;
+  padding-left: 4rem;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+}
+
+th{
+  border: 1px solid #ccc;
+  text-align: left;
+  padding: 8px;
+}
+
+td {
+  border: 1px solid #ccc;
+  color: rgb(247, 211, 7);
+  text-align: left;
+  padding: 8px;
+}

@@ -1,21 +1,19 @@
 {% extends "course/base.html" %}
 
-{% block title %}Start learng Python{% endblock %}
+{% block title %}Start learnig Python{% endblock %}
 
-{% block topic %}Lessons{% endblock %}
+{% block topic %}<center>Lessons</center>{% endblock %}
 
 {% block sidebar %} {% endblock %}
 
 {% block content %}
-    {% for lesson in lessons_list %}
+    {% for module in module_list %}
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h3>{{lesson.name}}</h3>
-                <p class="lead">{{lesson.theory|truncatewords:30 }}</p>
-                <hr class="my-2">
-                <p class="lead">
-                    <a class="btn btn-primary btn-lg" href="/lessons/{{lesson.id}}" role="button">Go to lesson</a>
-                </p>
+                <center><h1 style="font-size: 48px;">{{module.name}}</h1></center>
+                {% for lesson in module.lessons.all %}
+                    <a href="/lessons/{{lesson.id}}"><h3>{{lesson.name}}</h3></a>
+                {% endfor %}
             </div>
         </div>
     {% endfor %}

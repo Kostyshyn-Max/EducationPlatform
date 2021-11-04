@@ -1,15 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        <h1>{{ exercise.name }}</h1>
-        <h2>{{ exercise.condition }}</h2>
-        <h2>{{ exercise.sample_input }}</h2>
-        <h2>{{ exercise.sample_output }}</h2>
-    </body>
-</html>
+{% extends 'course/base.html' %}
+{% load static %}
+{% load tags %}
+
+{% block topic %}<center>{{ exercise.name }}</center>{% endblock %}
+
+{% block content %}
+    <h2>Умова задачі: </h2>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h2>{{ exercise.condition }}</h2>
+        </div>
+    </div>
+    <h2>Ввід:</h2>
+    <div class="jumbotron jumbotron-fluid" style="padding-top: 5px; padding-bottom: 5px;">
+        <div class="container">
+            <h2>{{ exercise.sample_input }}</h2>
+        </div>
+    </div>
+    <h2>Вивід:</h2>
+    <div class="jumbotron jumbotron-fluid" style="padding-top: 5px; padding-bottom: 5px;">
+        <div class="container">
+            <h2>{{ exercise.sample_output }}</h2>
+        </div>
+    </div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <textarea id="code" name="code"></textarea>
+        <input type="submit" value="OK">
+    </form>
+    
+    <p>{%func1 str=inp_value%}</p>
+    
+
+{% endblock %}
