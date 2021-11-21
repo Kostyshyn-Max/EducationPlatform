@@ -4,32 +4,71 @@
 
 {% block topic %}<center>{{ exercise.name }}</center>{% endblock %}
 
-{% block content %}
-    <h2>Умова задачі: </h2>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h2>{{ exercise.condition }}</h2>
+{% block navbar-content %}
+  <div class="login">
+    <img src="{% static 'course/image/HumanLogo.svg' %} " alt="" style="width: 2rem; height: 2rem" height="1.5rem">
+    <p style="cursor: pointer"> Максим Костишин</p>
+  </div>
+{% endblock navbar-content %}
+  
+{% block body-content %}
+    <div class="left-sidebar">
+        <div class="modules">
+            <div class="module-wrap">
+                <div class="module"><p class="module-number">I</p></div>
+                <div class="module" style="background-color: #2f715b"><p class="module-number">II</p></div>
+                <div class="module" style="background-color: #2f715b"><p class="module-number">III</p></div>
+            </div>
+        </div>
+        <div class="lessons-form">
+            <h1 class="module-name">Початок роботи з Python</h1>
+            <div class="lessons-name">
+            {%for lesson in lessons_list%}
+                <div class="module-content collapsable">
+                    <div class="lesson-title-content">
+                        <img class="collapse-icon {% if_current current_lesson.id lesson.id 'reversed' %}" src="{% static 'course/image/sort-down.svg' %}" alt="" ><h2 class="lesson-name">{{lesson.name}}</h2>
+                    </div>
+                    <div class="lesson-content {% if_current current_lesson.id lesson.id 'opened' %}">
+                    <a style="width: 100%;" href="/lessons/{{lesson.id}}"><h2 class="lesson-content-text {% if_current current_lesson.id lesson.id 'selected' %}">Теорія</h2></a>
+                    {% for exercise in lesson.exercises.all %}
+                        <a href="/exercises/{{exercise.id}}" class="lesson-content-text">{{exercise.name}}</a>
+                    {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
         </div>
     </div>
-    <h2>Ввід:</h2>
-    <div class="jumbotron jumbotron-fluid" style="padding-top: 5px; padding-bottom: 5px;">
-        <div class="container">
-            <h2>{{ exercise.sample_input }}</h2>
+    
+    <form method="POST">
+        {% csrf_token %}   
+        <div class="code">
+            <textarea id="code-editor" class="code-editor" rows="10" input=numbering id="code" name="code">{{inp_value}}</textarea>
         </div>
-    </div>
-    <h2>Вивід:</h2>
-    <div class="jumbotron jumbotron-fluid" style="padding-top: 5px; padding-bottom: 5px;">
-        <div class="container">
-            <h2>{{ exercise.sample_output }}</h2>
+        <div class="right-sidebar">
+            <h1 class="exercise-name">{{exercise.name}}</h1>
+            <p class="exercise-condition">{{exercise.condition}}</p>
+            <h2 class="example-title">Приклади</h2>
+            <div class="examples">
+                <div class="input-output">
+                    <div class="input">
+                        <h2 class="input-output-title">Ввід</h2>
+                        <p class="input-output-content">{{exercise.sample_input|safe}}</p>
+                    </div>
+                    <div class="output">
+                        <h2 class="input-output-title">Вивід</h2>
+                        <p class="input-output-content">{{exercise.sample_output|safe}}</p>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="submit-button">Запустити код</button>
         </div>
-    </div>
-    <form action="" method="post">
-        {% csrf_token %}
-        <textarea id="code" name="code"></textarea>
-        <input type="submit" value="OK">
     </form>
-    
-    <p>{%func1 str=inp_value%}</p>
-    
 
+    <div id="code-output" class="code-output {{result_popup_visibility}}">
+        <img class="form-close-icon" src="{% static 'course/image/close-message-icon.svg' %}" alt="" onclick="hide_result_popup()">
+        <center><h1 class="code-message module-name">{%func1 str=inp_value input_output_list=input_output_list%}</h1></center>
+    </div>
+
+   
 {% endblock %}

@@ -4,13 +4,19 @@
 }
 
 code{
-  color: rgb(247, 211, 7);
+  color: #FFFEF2;
   display: block;
   margin: 1rem 1rem 1rem 10%;
   width: 50%;
+  font-family: Courier New, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.8rem;
+  line-height: 1rem;
   white-space: break-spaces;
-  background-color: #1c1c1c;
-  padding-left: 4rem;
+  background-color: #39876F;
+  border-radius: 10px;
+  padding: 0.3rem 0.3rem 0.3rem 4rem;
 }
 
 table {
@@ -20,13 +26,13 @@ table {
 }
 
 th{
-  border: 1px solid #ccc;
+  border: 1px solid #FFFEF2;
   text-align: left;
   padding: 8px;
 }
 
 td {
-  border: 1px solid #ccc;
+  border: 1px solid #FFFEF2;
   color: rgb(247, 211, 7);
   text-align: left;
   padding: 8px;

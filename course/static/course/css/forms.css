@@ -1,0 +1,208 @@
+.login-form{
+    position: absolute;
+    visibility: hidden;
+    top: 20vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 20rem;
+    background: #FFFEF2;
+    border-radius: 10px;
+}
+.login-form-title-text{
+    height: 4.5rem;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #39876F;
+    justify-content: space-around;
+}
+.form-close-icon{
+    position: absolute;
+    cursor: pointer;
+    width: 1rem;
+    height: 1rem;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+.login-form-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-form-name-field::placeholder{
+    color: #39876FBA;
+}
+.login-form-name-field:focus {
+    outline: 3px solid #39876F;
+}
+.continue-button:hover{
+    background-color: #2f715b;
+}
+.continue-button:active{
+    background-color: #39876F;
+}
+.continue-with-google{
+    position: static;
+    cursor: pointer;
+    width: 14.375rem;
+    height: 2.25rem;
+    left: 2.85rem;
+    top: 12.1625rem;
+    background-color: #FFFEF2;
+    color: #39876F;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.084), 0 2px 3px rgba(0, 0, 0, 0.168);
+    border-radius: 0.5rem;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.8rem;
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+    margin: 0.7rem 0;
+    border: none;
+    text-align: center;
+}
+.button-continue-with-google{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.continue-with-google:hover{
+    background-color: #cecece;
+}
+.continue-with-google-icon{
+    width: 1.125rem;
+    height: auto;
+    margin: auto 0;
+}
+.continue-with-google:active{
+    background-color: #FFFEF2;
+}
+.login-form-footer-text{
+    position: static;
+    width: 15rem;
+    left: calc(50% - 14.8rem/2);
+    top: 85.71%;
+    bottom: 6.25%;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.75rem;
+    line-height: 200.06%;
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    cursor: pointer;
+    color: #39876F;
+    flex: none;
+    order: 4;
+    flex-grow: 0;
+    margin: 0.7rem 0;
+}
+.register-form{
+    position: absolute;
+    visibility: hidden;
+    width: 20rem;
+    top: 20vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: #FFFEF2;
+    border-radius: 10px;
+    z-index: 2;
+}
+.register-form-title-text{
+    height: 4.5rem;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #39876F;
+    justify-content: space-around;
+}
+.form-input-field{
+    position: static;
+    width: 17rem;
+    padding-left: 1rem;
+    height: 2rem;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 0.8rem;
+    line-height: 106.19%;
+    left: calc(50% - 16.75rem/2);
+    color: #39876F;
+    background: rgba(57, 135, 111, 0.1);
+    border-radius: 0.5rem;
+    margin: 0.7rem 0 0.1rem;
+    border: none;
+}
+.form-input-field::placeholder{
+    color: #39876FBA;
+}
+.form-input-field:focus {
+    outline: 3px solid #39876F;
+}
+.register-form-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.register-form-footer-text{
+    position: static;
+    width: 9.5rem;
+    left: calc(50% - 9.5rem/2);
+    top: 89.68%;
+    cursor: pointer;
+    bottom: 4.52%;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.75rem;
+    line-height: 200.06%;
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    color: #39876F;
+    flex: none;
+    order: 6;
+    flex-grow: 0;
+    margin: 0.7rem 0;
+}
+.continue-button{
+    position: static;
+    width: 14.375rem;
+    height: 2.25rem;
+    left: 2.85rem;
+    background-color: #39876F;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.168), 0 2px 3px rgba(0, 0, 0, 0.084);
+    border-radius: 10px;
+    order: 2;
+    margin:  0.7rem 0;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.8rem;
+    cursor: pointer;
+    color: #FFFEF2;
+    line-height: 1rem;
+    border: none;
+}
+.error-message{
+    color: red;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 12px;
+    margin: 0;
+}

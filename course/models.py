@@ -20,7 +20,7 @@ class Exercise(models.Model):
     condition = models.TextField()
     sample_input = models.TextField()
     sample_output = models.TextField()
-    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+    lesson = models.ForeignKey(Lesson, related_name="exercises", on_delete=models.CASCADE)
 
 class InputOutputData(models.Model):
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)

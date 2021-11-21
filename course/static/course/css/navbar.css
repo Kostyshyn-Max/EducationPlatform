@@ -1,76 +1,139 @@
-body {
-    background-color:#222;
-    padding: 1rem;
-    color: #a5a5a5 !important;
+body{
+    margin: 0;
 }
-nav {
-    background-color:#333435 !important;
+.navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 13px 0 13px;
+    position: static;
+    width: auto;
+    height: 2.5rem;
+    background: #39876F;
+    flex: none;
+    order: 1;
+    filter: drop-shadow(0.167rem 0px 0.167rem rgba(0, 0, 0, 0.25));
+    align-self: stretch;
+    flex-grow: 0;
 }
-#login-dp {
-    min-width: 250px;
-    padding: 14px 14px 0;
-    overflow: hidden;
-    background-color: rgba(255, 255, 255, .8);
+.navbar-title{
+    position: static;
+    color: #FFFEF2;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
 }
-
-#login-dp .help-block {
-    font-size: 12px
+.logo{
+    position: static;
+    width: 2rem;
+    height: 2rem;
+    filter: brightness(0) invert(1);
 }
-
-#login-dp .bottom {
-    background-color: rgba(255, 255, 255, .8);
-    border-top: 1px solid #ddd;
-    clear: both;
-    padding: 14px;
+.frame1{
+    position: static;
+    width: 6.5rem;
+    height: 2.5rem;
+    left: 10rem;
+    top: 0;
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+    margin: 0 0;
 }
-
-#login-dp .social-buttons {
-    margin: 12px 0
+.line1{
+    position: static;
+    width: 2rem;
+    left: 10rem;
+    top: 1rem;
+    bottom: 2.5rem;
+    border: 1px solid #FFFEF2;
+    transform: rotate(90deg);
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    margin: 0 0;
 }
-
-#login-dp .social-buttons a {
-    width: 49%;
+.line2{
+    position: static;
+    width: 2rem;
+    left: 16.5rem;
+    top: 1rem;
+    bottom: 2.5rem;
+    border: 1px solid #FFFEF2;
+    transform: rotate(90deg);
+    flex: none;
+    order: 4;
+    flex-grow: 0;
+    margin: 0 0;
 }
-
-#login-dp .form-group {
-    margin-bottom: 10px;
+.line3{
+    position: static;
+    width: 2rem;
+    height: 0;
+    right: 13rem;
+    top: 1rem;
+    border: 1px solid #FFFEF2;
+    transform: rotate(90deg);
+    flex: none;
+    order: 7;
+    flex-grow: 0;
+    margin-left: auto;
 }
-
-.btn-fb {
-    color: #fff;
-    background-color: #3b5998;
+.login{
+    position: static;
+    height: 2.5rem;
+    right: 9rem;
+    top: 0;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFEF2;
+    flex: none;
+    order: 8;
+    flex-grow: 0;
+    margin: 0 0;
 }
-
-.btn-fb:hover {
-    color: #fff;
-    background-color: #496ebc
+.line4{
+    position: static;
+    width: 2rem;
+    height: 0;
+    right: 6rem;
+    top: 1rem;
+    border: 1px solid #FFFEF2;
+    transform: rotate(90deg);
+    flex: none;
+    order: 9;
+    flex-grow: 0;
+    margin: 0 0;
 }
-
-.btn-tw {
-    color: #fff;
-    background-color: #55acee;
-}
-
-.btn-tw:hover {
-    color: #fff;
-    background-color: #59b5fa;
-}
-
-@media(max-width:768px) {
-    #login-dp {
-        background-color: inherit;
-        color: #fff;
-    }
-    #login-dp .bottom {
-        background-color: inherit;
-        border-top: 0 none;
-    }
-}
-
-.navbar {
-    margin-bottom: 1rem !important;
-}
-.jumbotron {
-    background-color:#333435 !important;
-    border-radius: 6px;
+.register{
+    position: static;
+    height: 2.5rem;
+    right: 0;
+    top: 0;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFEF2;
+    flex: none;
+    order: 10;
+    flex-grow: 0;
+    margin: 0 0;
 }

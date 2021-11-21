@@ -1,0 +1,192 @@
+.left-sidebar{
+    filter: drop-shadow(4px 0px 4px rgba(0, 0, 0, 0.25));
+    position: absolute;
+    width: 15.25rem;
+    height: calc(100% - 2.5rem);
+    left: 0;
+    z-index: -1;
+    top: 2.5rem;
+}
+.lessons-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0.5rem;
+    position: absolute;
+    left: 14.75%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #39876F;
+}
+.modules{
+    position: absolute;
+    width: 2.25rem;
+    height: 100%;
+    background-color: #2f715b;
+}
+.module-wrap{
+    filter: drop-shadow(-0.167rem 0.081rem 0.167rem rgba(0, 0, 0, 0.25));
+}
+.module{
+    position: relative;
+    cursor: pointer;
+    width: 2rem;
+    height: 6.25rem;
+    left: 0.3rem;
+    background-color: #39876F;
+    clip-path: polygon(0% 13%, 100% 0, 100% 100%, 0% 87%);
+}
+.lesson-title-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 0 0 8px;
+    cursor: pointer;
+}
+.module-content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+}
+.module-number{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    letter-spacing: 0.015rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFEF2;
+}
+.theory{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: calc(100% - 3.5rem);
+    padding: 0.4rem 0.4rem 0.4rem 2rem;
+    overflow-y: scroll;
+    position: absolute;
+    background-color: #FFFEF2;
+    width: calc(100% - 17.7rem);
+    color: #39876F;
+    left: 15.25rem;
+    top: 2.5rem;
+}
+.theory::-webkit-scrollbar{
+    background: #FFFEF2;
+    width: 0.8rem;
+}
+.theory::-webkit-scrollbar-thumb{
+   background: #257059;
+   border-radius: 10px;
+   box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.168), 0 2px 3px rgba(0, 0, 0, 0.084);
+   max-height: 4rem;
+   min-height: 4rem;
+}
+.theory::-webkit-scrollbar-thumb:hover{
+   background-color: #20614d;
+}
+.theory::-webkit-scrollbar-thumb:active{
+   background: #297b62;
+}
+.module-name{
+    color: #FFFEF2;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.1625rem;
+    text-align: center;
+    letter-spacing: 0.015rem;
+}
+.lesson-name{
+    color: #FFFEF2;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.8rem;
+    line-height: 0.9rem;
+    margin: 0.3rem 0;
+    letter-spacing: 0.015rem;
+}
+.collapse-icon{
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-right: 0.3rem;
+    transform: scale(1, 1);
+}
+.lessons-name{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.25rem 0.4125rem 0.4125rem 1.3375rem;
+    position: static;
+    width: 11rem;
+    height: 35rem;
+    left: 0;
+    top: 1rem;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0 0;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.168), 0 2px 3px rgba(0, 0, 0, 0.084);
+    overflow-y: scroll;
+}
+.lessons-name::-webkit-scrollbar{
+     background: #39876F;
+     width: 0.5rem;
+ }
+.lessons-name::-webkit-scrollbar-thumb{
+    background: #257059;
+    border-radius: 10px;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.168), 0 2px 3px rgba(0, 0, 0, 0.084);
+    max-height: 4rem;
+    min-height: 4rem;
+}
+.lessons-name::-webkit-scrollbar-thumb:hover{
+    background-color: #20614d;
+}
+.lessons-name::-webkit-scrollbar-thumb:active{
+    background: #297b62;
+}
+.lesson-content-text{
+    font-family: Roboto, serif;
+    font-style: italic;
+    width: 100%;
+    font-weight: normal;
+    font-size: 0.7rem;
+    line-height: 0.9rem;
+    letter-spacing: 0.015rem;
+    margin: 0 0 0.3rem 0;
+    display: flex;
+    align-items: center;
+    text-indent: 0.6625rem;
+    color: #FFFEF2;
+    cursor: pointer;
+}
+.lesson-content{
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0.4125rem 0.4125rem 1.3375rem;
+    position: static;
+    width: 8rem;
+}
+.opened{
+    display: flex;
+}
+.selected{
+    background-color: #257059;
+}
+.reversed{
+    transform: scale(1, -1);
+}

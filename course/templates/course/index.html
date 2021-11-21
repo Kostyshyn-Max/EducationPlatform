@@ -1,20 +1,118 @@
 {% extends "course/base.html" %}
+{% load static %}
+{% load tags %}
 
-{% block title %}Start learnig Python{% endblock %}
+{% block navbar-content %}
+    <div class="login" onclick="showLoginForm()"><p style="cursor: pointer">Увійти</p></div>
+    <div class="line4"></div>
+    <div class="register" onclick="showRegisterForm()"><p style="cursor: pointer"><p style="cursor: pointer">Зареєструватися</p></div>
+{% endblock navbar-content %}
 
-{% block topic %}<center>Lessons</center>{% endblock %}
+{% block body-content %}
+    <div class="main-page-content">
+        <img src="{% static 'course/image/Background.jpg' %}" alt="Background" class="main-page-background"></img>
+        <div class="main-page-title">EdPlatform</div>
+        <p class="main-page-text">
+        &nbsp;Майбутній Python програмісте! Вітаємо на нашій навчальній платформі. Тут ти зможеш навчитися основ програмування мовою Python, і не тільки. <br>
+        &nbsp;&nbsp;Увесь матеріал поділений на модулі та уроки. Протягом уроку ти зможеш ознайомитися з теоретичним матеріалом теми, викладеним у формі прикладів, таблиць та правил.
+        Після кожного уроку тебе чекатимуть вправи, з допомогою яких можна закріпити вивчений матеріал та перевірити свої знання. <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;До нових звершень та щасти на шляху до становлення справжнім програмістом!</p>
+        <p>{{user.name}}</p>
+    </div>
+    
+    <div class="container py-5">
+        <form id="login-form" class="login-form" action="/login/" method="post" novalidate style="visibility: {{popupL}}">
+            <div class="login-form-title-text">Вхід</div>
+            <img class="form-close-icon" src="{% static 'course/image/Close-icon.svg' %}" alt="" onclick="hideLoginForm()">
+            {% csrf_token %}
+            <div class="login-form-content" border="1">
+                {% if form2.non_field_errors %}
+                    {% for error in form2.non_field_errors %}
+                    <p class="error-message">{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
 
-{% block sidebar %} {% endblock %}
-
-{% block content %}
-    {% for module in module_list %}
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <center><h1 style="font-size: 48px;">{{module.name}}</h1></center>
-                {% for lesson in module.lessons.all %}
-                    <a href="/lessons/{{lesson.id}}"><h3>{{lesson.name}}</h3></a>
+                {% for hidden_field in form2.hidden_fields %}
+                {% if hidden_field.errors %}
+                    {% for error in hidden_field.errors %}
+                    <p class="error-message">(Hidden field {{ hidden_field.name }}) {{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+                {{ hidden_field }}
                 {% endfor %}
+
+                {% for field in form2.visible_fields %}
+                <div>
+                    <div>
+                        {{field|add_classes:'form-input-field'}}
+                        
+                        {% if field.errors %}
+                            {% for error in field.errors %}
+                            <p class="error-message">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                        {% if field.help_text %}
+                        <br />{{ field.help_text }}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+
+                <button class="continue-button" type="submit">Увійти</button>
+                <button class="continue-with-google" style="display: none">
+                    <div class="button-continue-with-google">
+                        <img class="continue-with-google-icon" src="{% static 'course/image/Google-icon.svg' %} " alt="">
+                        Log in with Google
+                    </div>
+                </button>
+                <p class="login-form-footer-text" onclick="showRegisterForm()"><a>Немає облікового запису? Створіть новий</a></p>
             </div>
-        </div>
-    {% endfor %}
-{% endblock %}
+        </form>
+        <form id="register-form" class="register-form" method="POST"  action="/register/" novalidate style="visibility: {{popupR}}">
+            <div class="register-form-title-text">Створіть свій аккаунт</div>
+            <img class="form-close-icon" src="{% static 'course/image/Close-icon.svg' %}" alt="" onclick="hideRegisterForm()">
+            {% csrf_token %}
+            <div class="register-form-content" border="1">
+                {% if form1.non_field_errors %}
+                <ul>
+                    {% for error in form1.non_field_errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                {% for hidden_field in form1.hidden_fields %}
+                {% if hidden_field.errors %}
+                {% endif %}
+                {{ hidden_field }}
+                {% endfor %}
+
+                {% if form.errors %}
+                    hello
+                {% endif %}
+
+                {% for field in form1.visible_fields %}
+                <div>
+                    <div>
+                        {{field|add_classes:'form-input-field'}}
+                        
+                        {% if field.errors %}
+                            {% for error in field.errors %}
+                            <p class="error-message">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+                <button class="continue-button" type="submit">Зареєструватися</button>
+                <button class="continue-with-google"  style="display: none">
+                    <div class="button-continue-with-google">
+                        <img class="continue-with-google-icon" src="{% static 'course/image/Google-icon.svg' %}" alt="">
+                        Sing up with Google
+                    </div>
+                </button>
+                <p class="register-form-footer-text" onclick="showLoginForm()"><a>Вже зареєстовані? Увійти</a></p>
+            </div>
+        </form>
+    </div>
+{% endblock body-content %}
