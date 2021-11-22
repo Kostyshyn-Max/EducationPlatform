@@ -5,7 +5,7 @@ from .models import Lesson, Exercise, Module, InputOutputData
 from .forms import NewUserForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
@@ -14,7 +14,17 @@ def index(request):
     form1 = NewUserForm()
     form2 = AuthenticationForm()
 
-    return render(request, 'course/index.html', {'form1': form1, 'form2': form2})
+    message = ''
+    popupR = 'hidden'
+    popupL = 'hidden'
+    if request.GET.get('l', 'none') != 'none':
+        message = 'Увійдіть щоб отримати доступ до курсу'
+        popupL = 'visible'
+    if request.GET.get('r', 'none') != 'none':
+        message = 'Зареєструйтеся щоб отримати доступ до курсу'
+        popupR = 'visible'
+    return render(request, 'course/index.html', {'form1': form1, 'form2': form2, 'popupR': popupR, 'popupL': popupL,
+                                                 'message': message})
 
 
 def lessons(request):
@@ -35,6 +45,9 @@ def detail(request, lesson_id):
                   {'exercises_list': exercises_list, 'lessons_list': lessons_list, 'module_list': module_list,
                    'current_lesson': current_lesson, 'user': request.user})
 
+def _logout(request):
+    logout(request)
+    return redirect('/')
 
 def exercises(request, lesson_id):
     lesson = Lesson.objects.filter(id=lesson_id)[0]
@@ -48,11 +61,12 @@ def exercise_detail(request, exercise_id):
     inp_value = request.POST.get('code', '')
     lessons_list = Lesson.objects.all()
     module_list = Module.objects.all()
+    current_exercise = Exercise.objects.filter(id = exercise_id)[0]
     result_popup_visibility = 'visible' if inp_value != '' else 'hidden'
     return render(request, 'course/exercise/detail.html',
                   {'exercise': exercise, 'inp_value': inp_value, 'lessons_list': lessons_list,
                    'module_list': module_list, 'input_output_list': input_output_list,
-                   'result_popup_visibility': result_popup_visibility})
+                   'result_popup_visibility': result_popup_visibility, 'current_exercise': current_exercise})
 
 
 def register_request(request):
@@ -64,8 +78,8 @@ def register_request(request):
             user = form.save()
             login(request, user)
             messages.success(request, "Registration successful.")
-            return redirect("/lessons/1")
-        messages.error(request, form.errors)
+            return redirect('/lessons/1' if request.POST.get('next') == '' else request.POST.get('next'))
+        #messages.error(request, form.errors)
         messages.error(request, "Unsuccessful registration. Invalid information.")
         popup = 'visible'
 
@@ -83,7 +97,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"You are now logged in as {username}.")
-                return redirect("/lessons/1")
+                return redirect('/lessons/1' if request.POST.get('next') == '' else request.POST.get('next'))
             else:
                 messages.error(request, "Invalid username or password.")
                 popup = 'visible'

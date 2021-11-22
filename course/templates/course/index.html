@@ -3,14 +3,26 @@
 {% load tags %}
 
 {% block navbar-content %}
-    <div class="login" onclick="showLoginForm()"><p style="cursor: pointer">Увійти</p></div>
-    <div class="line4"></div>
-    <div class="register" onclick="showRegisterForm()"><p style="cursor: pointer"><p style="cursor: pointer">Зареєструватися</p></div>
+    {% if request.user.is_authenticated %}
+        <div class="dropdown login">
+            <button class="drop-btn login">
+                <img src="{% static 'course/image/HumanLogo.svg' %} " alt="" style="width: 2rem; height: 2rem" height="1.5rem">
+                <p style="cursor: pointer">{{ request.user.username }}</p>
+            </button>
+            <div class="dropdown-content">
+                <a href="/logout/">Вийти</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="login" onclick="showLoginForm()"><p style="cursor: pointer">Увійти</p></div>
+        <div class="line4"></div>
+        <div class="register" onclick="showRegisterForm()"><p style="cursor: pointer"><p style="cursor: pointer">Зареєструватися</p></div>
+    {% endif %}
 {% endblock navbar-content %}
 
 {% block body-content %}
     <div class="main-page-content">
-        <img src="{% static 'course/image/Background.jpg' %}" alt="Background" class="main-page-background"></img>
+        <img src="{% static 'course/image/Background.jpg' %}" alt="Background" class="main-page-background"/>
         <div class="main-page-title">EdPlatform</div>
         <p class="main-page-text">
         &nbsp;Майбутній Python програмісте! Вітаємо на нашій навчальній платформі. Тут ти зможеш навчитися основ програмування мовою Python, і не тільки. <br>
@@ -25,7 +37,10 @@
             <div class="login-form-title-text">Вхід</div>
             <img class="form-close-icon" src="{% static 'course/image/Close-icon.svg' %}" alt="" onclick="hideLoginForm()">
             {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
             <div class="login-form-content" border="1">
+                <p class="error-message">{{ message }}</p>
+
                 {% if form2.non_field_errors %}
                     {% for error in form2.non_field_errors %}
                     <p class="error-message">{{ error }}</p>
@@ -33,12 +48,12 @@
                 {% endif %}
 
                 {% for hidden_field in form2.hidden_fields %}
-                {% if hidden_field.errors %}
-                    {% for error in hidden_field.errors %}
-                    <p class="error-message">(Hidden field {{ hidden_field.name }}) {{ error }}</p>
-                    {% endfor %}
-                {% endif %}
-                {{ hidden_field }}
+                    {% if hidden_field.errors %}
+                        {% for error in hidden_field.errors %}
+                        <p class="error-message">(Hidden field {{ hidden_field.name }}) {{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                    {{ hidden_field }}
                 {% endfor %}
 
                 {% for field in form2.visible_fields %}
@@ -72,6 +87,7 @@
             <div class="register-form-title-text">Створіть свій аккаунт</div>
             <img class="form-close-icon" src="{% static 'course/image/Close-icon.svg' %}" alt="" onclick="hideRegisterForm()">
             {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
             <div class="register-form-content" border="1">
                 {% if form1.non_field_errors %}
                 <ul>

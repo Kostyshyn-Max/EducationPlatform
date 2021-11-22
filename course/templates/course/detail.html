@@ -3,9 +3,14 @@
 {% load tags %}
 
 {% block navbar-content %}
-  <div class="login">
-    <img src="{% static 'course/image/HumanLogo.svg' %} " alt="" style="width: 2rem; height: 2rem" height="1.5rem">
-    <p style="cursor: pointer">{{ user.name }}</p>
+   <div class="dropdown login">
+      <button class="drop-btn login">
+          <img src="{% static 'course/image/HumanLogo.svg' %} " alt="" style="width: 2rem; height: 2rem" height="1.5rem">
+          <p style="cursor: pointer">{{ request.user.username }}</p>
+      </button>
+      <div class="dropdown-content">
+          <a href="/logout/">Вийти</a>
+      </div>
   </div>
 {% endblock navbar-content %}
   

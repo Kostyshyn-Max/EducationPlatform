@@ -5,10 +5,15 @@
 {% block topic %}<center>{{ exercise.name }}</center>{% endblock %}
 
 {% block navbar-content %}
-  <div class="login">
-    <img src="{% static 'course/image/HumanLogo.svg' %} " alt="" style="width: 2rem; height: 2rem" height="1.5rem">
-    <p style="cursor: pointer"> Максим Костишин</p>
-  </div>
+   <div class="dropdown login">
+        <button class="drop-btn login">
+            <img src="{% static 'course/image/HumanLogo.svg' %} " alt="" style="width: 2rem; height: 2rem" height="1.5rem">
+            <p style="cursor: pointer">{{ request.user.username }}</p>
+        </button>
+        <div class="dropdown-content">
+            <a href="/logout/">Вийти</a>
+        </div>
+    </div>
 {% endblock navbar-content %}
   
 {% block body-content %}
@@ -26,12 +31,12 @@
             {%for lesson in lessons_list%}
                 <div class="module-content collapsable">
                     <div class="lesson-title-content">
-                        <img class="collapse-icon {% if_current current_lesson.id lesson.id 'reversed' %}" src="{% static 'course/image/sort-down.svg' %}" alt="" ><h2 class="lesson-name">{{lesson.name}}</h2>
+                        <img class="collapse-icon {% if_current current_exercise.lesson.id lesson.id 'reversed' %}" src="{% static 'course/image/sort-down.svg' %}" alt="" ><h2 class="lesson-name">{{lesson.name}}</h2>
                     </div>
-                    <div class="lesson-content {% if_current current_lesson.id lesson.id 'opened' %}">
-                    <a style="width: 100%;" href="/lessons/{{lesson.id}}"><h2 class="lesson-content-text {% if_current current_lesson.id lesson.id 'selected' %}">Теорія</h2></a>
+                    <div class="lesson-content {% if_current current_exercise.lesson.id lesson.id 'opened' %}">
+                    <a style="width: 100%;" href="/lessons/{{lesson.id}}"><h2 class="lesson-content-text ">Теорія</h2></a>
                     {% for exercise in lesson.exercises.all %}
-                        <a href="/exercises/{{exercise.id}}" class="lesson-content-text">{{exercise.name}}</a>
+                        <a href="/exercises/{{exercise.id}}" class="lesson-content-text {% if_current current_exercise.id exercise.id 'selected' %}">{{exercise.name}} </a>
                     {% endfor %}
                     </div>
                 </div>
@@ -70,5 +75,4 @@
         <center><h1 class="code-message module-name">{%func1 str=inp_value input_output_list=input_output_list%}</h1></center>
     </div>
 
-   
 {% endblock %}
