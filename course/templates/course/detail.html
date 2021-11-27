@@ -3,13 +3,13 @@
 {% load tags %}
 
 {% block navbar-content %}
-   <div class="dropdown login">
-      <button class="drop-btn login">
+   <div class="dropdown username">
+      <button class="drop-btn username">
           <img src="{% static 'course/image/HumanLogo.svg' %} " alt="" style="width: 2rem; height: 2rem" height="1.5rem">
           <p style="cursor: pointer">{{ request.user.username }}</p>
       </button>
       <div class="dropdown-content">
-          <a href="/logout/">Вийти</a>
+          <a href="/logout/?path={{request.path}}">Вийти</a>
       </div>
   </div>
 {% endblock navbar-content %}
@@ -18,24 +18,28 @@
   <div class="left-sidebar">
     <div class="modules">
         <div class="module-wrap">
-            <div class="module"><p class="module-number">I</p></div>
-            <div class="module" style="background-color: #2f715b"><p class="module-number">II</p></div>
-            <div class="module" style="background-color: #2f715b"><p class="module-number">III</p></div>
+            {% for module in module_list %}
+              {% if current_lesson.module == module %}
+                <div class="module" ><a class="module-number {% is_module_completed module request.user %}" href="/lessons/{% first_lesson_id module.id%}">{% int_to_Roman num=module.id %}</a></div>
+              {% else %}  
+                <div class="module" style="background-color: #2f715b" ><a class="module-number {% is_module_completed module request.user %}" href="/lessons/{% first_lesson_id module.id%}">{% int_to_Roman num=module.id %}</a></div>
+              {% endif %}
+            {% endfor %}
         </div>
     </div>
       <div class="lessons-form">
-        <h1 class="module-name">Початок роботи з Python</h1>
+        <h1 class="module-name">{{ current_lesson.module.name }}</h1>
         <div class="lessons-name">
-          {%for lesson in lessons_list%}
+          {%for lesson in current_lesson.module.lessons.all %}
             <div class="module-content collapsable">
                 <div class="lesson-title-content">
-                    <img class="collapse-icon {% if_current current_lesson.id lesson.id 'reversed' %}" src="{% static 'course/image/sort-down.svg' %}" alt="" ><h2 class="lesson-name">{{lesson.name}}</h2>
+                    <img class="collapse-icon {% if_current current_lesson.id lesson.id 'reversed' %}" src="{% static 'course/image/sort-down.svg' %}" alt="" ><h2 class="lesson-name {% is_lesson_completed lesson request.user %}">{{lesson.name}}</h2>
                 </div>
                 <div class="lesson-content {% if_current current_lesson.id lesson.id 'opened' %}">
-                  <a style="width: 100%;" href="/lessons/{{lesson.id}}"><h2 class="lesson-content-text {% if_current current_lesson.id lesson.id 'selected' %}">Теорія</h2></a>
+                  <a style="width: 100%;" href="/lessons/{{lesson.id}}"><h2 style="font-weight: bold; font-size: 0.8em;" class="lesson-content-text {% is_lesson_completed lesson request.user %} {% if_current current_lesson.id lesson.id 'selected' %}">Теорія</h2></a>
                   {% for exercise in lesson.exercises.all %}
-                    <a href="/exercises/{{exercise.id}}" class="lesson-content-text">{{exercise.name}}</a>
-                  {% endfor %}
+                        <a style="margin-left: 1em;" href="/exercises/{{exercise.id}}" class="lesson-content-text {% is_completed user=request.user exercise=exercise %} {% if_current current_exercise.id exercise.id 'selected' %}">{{exercise.name}} </a>
+                    {% endfor %}
                 </div>
             </div>
           {% endfor %}
@@ -47,4 +51,10 @@
     <h1 style="text-align: center;">{{current_lesson.name}}</h1>
     {{current_lesson.theory|safe}}
   </div>
+
+  <!--
+    {% for message in messages %}
+      <p>{{ message }}</p>
+    {% endfor %}
+  -->
 {% endblock body-content %}

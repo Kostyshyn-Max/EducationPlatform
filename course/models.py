@@ -32,3 +32,8 @@ class Attempt(models.Model):
     code = models.TextField()
     pub_date = models.DateTimeField()
     result = models.BooleanField() 
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    
+class UserCustom(models.Model):
+    user = models.ForeignKey(get_user_model(), related_name="user_base", on_delete=models.CASCADE)
+    last_visited_page = models.CharField(max_length=255)

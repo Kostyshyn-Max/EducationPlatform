@@ -4,13 +4,14 @@
 
 {% block navbar-content %}
     {% if request.user.is_authenticated %}
-        <div class="dropdown login">
-            <button class="drop-btn login">
+        <div class="dropdown username">
+            <button class="drop-btn username">
                 <img src="{% static 'course/image/HumanLogo.svg' %} " alt="" style="width: 2rem; height: 2rem" height="1.5rem">
                 <p style="cursor: pointer">{{ request.user.username }}</p>
             </button>
             <div class="dropdown-content">
-                <a href="/logout/">Вийти</a>
+                <a href="/logout/?path={{request.path}}">Вийти</a>
+                <a href="/lessons/1/">Перейти до завдань</a> 
             </div>
         </div>
     {% else %}
@@ -131,4 +132,10 @@
             </div>
         </form>
     </div>
+
+    <!--
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    -->
 {% endblock body-content %}

@@ -5,13 +5,13 @@
 {% block topic %}<center>{{ exercise.name }}</center>{% endblock %}
 
 {% block navbar-content %}
-   <div class="dropdown login">
-        <button class="drop-btn login">
+   <div class="dropdown username">
+        <button class="drop-btn username">
             <img src="{% static 'course/image/HumanLogo.svg' %} " alt="" style="width: 2rem; height: 2rem" height="1.5rem">
             <p style="cursor: pointer">{{ request.user.username }}</p>
         </button>
         <div class="dropdown-content">
-            <a href="/logout/">Вийти</a>
+            <a href="/logout/?path={{request.path}}">Вийти</a>
         </div>
     </div>
 {% endblock navbar-content %}
@@ -20,23 +20,27 @@
     <div class="left-sidebar">
         <div class="modules">
             <div class="module-wrap">
-                <div class="module"><p class="module-number">I</p></div>
-                <div class="module" style="background-color: #2f715b"><p class="module-number">II</p></div>
-                <div class="module" style="background-color: #2f715b"><p class="module-number">III</p></div>
+               {% for module in module_list %}
+                    {% if current_exercise.lesson.module == module %}
+                        <div class="module" ><a class="module-number {% is_module_completed module request.user %}" href="/lessons/{% first_lesson_id module.id%}">{% int_to_Roman num=module.id %}</a></div>
+                    {% else %}  
+                        <div class="module" style="background-color: #2f715b" ><a class="module-number {% is_module_completed module request.user %}" href="/lessons/{% first_lesson_id module.id%}">{% int_to_Roman num=module.id %}</a></div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
         <div class="lessons-form">
-            <h1 class="module-name">Початок роботи з Python</h1>
+            <h1 class="module-name">{{current_exercise.lesson.module.name}}</h1>
             <div class="lessons-name">
-            {%for lesson in lessons_list%}
+            {%for lesson in current_exercise.lesson.module.lessons.all %}
                 <div class="module-content collapsable">
                     <div class="lesson-title-content">
-                        <img class="collapse-icon {% if_current current_exercise.lesson.id lesson.id 'reversed' %}" src="{% static 'course/image/sort-down.svg' %}" alt="" ><h2 class="lesson-name">{{lesson.name}}</h2>
+                        <img class="collapse-icon {% if_current current_exercise.lesson.id lesson.id 'reversed' %}" src="{% static 'course/image/sort-down.svg' %}" alt="" ><h2 class="lesson-name {% is_lesson_completed lesson request.user %}">{{lesson.name}}</h2>
                     </div>
                     <div class="lesson-content {% if_current current_exercise.lesson.id lesson.id 'opened' %}">
-                    <a style="width: 100%;" href="/lessons/{{lesson.id}}"><h2 class="lesson-content-text ">Теорія</h2></a>
+                    <a style="width: 100%;" href="/lessons/{{lesson.id}}"><h2 style="font-weight: bold; font-size: 0.8em; " class="lesson-content-text {% is_lesson_completed lesson request.user %}">Теорія</h2></a>
                     {% for exercise in lesson.exercises.all %}
-                        <a href="/exercises/{{exercise.id}}" class="lesson-content-text {% if_current current_exercise.id exercise.id 'selected' %}">{{exercise.name}} </a>
+                        <a style="margin-left: 1em;" href="/exercises/{{exercise.id}}" class="lesson-content-text {% is_completed user=request.user exercise=exercise %} {% if_current current_exercise.id exercise.id 'selected' %}">{{exercise.name}} </a>
                     {% endfor %}
                     </div>
                 </div>
@@ -48,7 +52,16 @@
     <form method="POST">
         {% csrf_token %}   
         <div class="code">
-            <textarea id="code-editor" class="code-editor" rows="10" input=numbering id="code" name="code">{{inp_value}}</textarea>
+            <textarea id="code_editor" class="code-editor" rows="10" input=numbering id="code" name="code">{{inp_value}}</textarea>
+            <script>
+              let editor = CodeMirror.fromTextArea(code_editor, {
+                lineNumbers: true,
+                mode: 'python',
+                theme: 'eclipse'
+              });
+
+              editor.setSize('calc(100% - 1.5rem)', 'auto');
+            </script>
         </div>
         <div class="right-sidebar">
             <h1 class="exercise-name">{{exercise.name}}</h1>
@@ -70,9 +83,9 @@
         </div>
     </form>
 
-    <div id="code-output" class="code-output {{result_popup_visibility}}">
+    <div id="code-output" class="code-output" style="visibility: {{ result_popup_visibility }};">
         <img class="form-close-icon" src="{% static 'course/image/close-message-icon.svg' %}" alt="" onclick="hide_result_popup()">
-        <center><h1 class="code-message module-name">{%func1 str=inp_value input_output_list=input_output_list%}</h1></center>
+        <center><h1 class="code-message module-name">{%func1 str=inp_value input_output_list=input_output_list exercise=current_exercise user=request.user%}</h1></center>
     </div>
 
 {% endblock %}

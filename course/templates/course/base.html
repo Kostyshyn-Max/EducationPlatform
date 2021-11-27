@@ -16,6 +16,11 @@
         <script src="{% static 'course/js/forms.js' %}"></script>
         <script src="{% static 'course/js/lessons.js' %}"></script>
         <script src="{% static 'course/js/code.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'course/lib/codemirror.css'%}">
+        <link rel="stylesheet" href="{% static 'course/theme/eclipse.css'%}">
+        <script src="{% static 'course/lib/codemirror.js'%}"></script>
+        <script src="{% static 'course/mode/python/python.js' %}"></script>
+
         {% block head-content %}{% endblock head-content %}
         <title>{% block title %} {% endblock %}</title>
     </head>
@@ -23,7 +28,7 @@
     <body>
         <nav class="navbar">
             <img class="logo" src="{% static 'course/image/Logo.svg' %}" alt="Logo">
-            <h2 class="navbar-title">EdPlatform</h2>
+            <a class="navbar-title" href="/">EdPlatform</a>
             <div class="line1"></div>
             <div class="frame1"></div>
             <div class="line2"></div>

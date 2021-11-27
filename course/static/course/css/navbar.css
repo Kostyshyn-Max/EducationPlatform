@@ -105,6 +105,27 @@ body{
     flex-grow: 0;
     margin: 0 0;
 }
+.username{
+    position: static;
+    height: 2.5rem;
+    right: 9rem;
+    width: 9rem;
+    top: 0;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFEF2;
+    flex: none;
+    order: 8;
+    flex-grow: 0;
+    margin: 0 0;
+    justify-content: center;
+}
 .line4{
     position: static;
     width: 2rem;
