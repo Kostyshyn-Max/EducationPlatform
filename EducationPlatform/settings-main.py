@@ -11,24 +11,23 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECURE_HSTS_SECONDS = 0
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'f$-^yygl-9(2_kv)wtb1dli)x=o3^0w9apxgin*iv-f$-^yygl-9(2_kv)wtb1dli)x=o3^0w9apxgin*iv+^f(ela_9'
+SECRET_KEY = 'django-insecure-f$-^yygl-9(2_kv)wtb1dli)x=o3^0w9apxgin*iv+^f(ela_9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['ed-platform.online']
-
-
+ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
@@ -125,12 +124,10 @@ LOGIN_URL = '/?l'
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-SESSION_COOKIE_SECURE = True
-
-CSRF_COOKIE_SECURE = True
