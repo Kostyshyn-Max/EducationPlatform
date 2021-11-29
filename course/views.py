@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     form1 = NewUserForm()
     form2 = AuthenticationForm()
-
+    users = User.objects.all()
     message = ''
     popupR = 'hidden'
     popupL = 'hidden'
@@ -25,7 +25,7 @@ def index(request):
         message = 'Зареєструйтеся щоб отримати доступ до курсу'
         popupR = 'visible'
     return render(request, 'course/index.html', {'form1': form1, 'form2': form2, 'popupR': popupR, 'popupL': popupL,
-                                                 'message': message})
+                                                 'message': message,'users': users })
 
 
 def lessons(request):
