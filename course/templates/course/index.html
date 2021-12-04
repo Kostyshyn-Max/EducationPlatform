@@ -34,7 +34,7 @@
     </div>
     
     <div class="container py-5">
-        <form id="login-form" class="login-form" action="ed-platform-space.herokuapp.com/login/" method="post" novalidate style="visibility: {{popupL}}">
+        <form id="login-form" class="login-form" action="https://ed-platform-space.herokuapp.com/login/" method="post" novalidate style="visibility: {{popupL}}">
             <div class="login-form-title-text">Вхід</div>
             <img class="form-close-icon" src="{% static 'course/image/Close-icon.svg' %}" alt="" onclick="hideLoginForm()">
             {% csrf_token %}
@@ -84,7 +84,7 @@
                 <p class="login-form-footer-text" onclick="showRegisterForm()"><a>Немає облікового запису? Створіть новий</a></p>
             </div>
         </form>
-        <form id="register-form" class="register-form" method="POST"  action="ed-platform-space.herokuapp.com/register/" novalidate style="visibility: {{popupR}}">
+        <form id="register-form" class="register-form" method="POST"  action="https://ed-platform-space.herokuapp.com/register/" novalidate style="visibility: {{popupR}}">
             <div class="register-form-title-text">Створіть свій аккаунт</div>
             <img class="form-close-icon" src="{% static 'course/image/Close-icon.svg' %}" alt="" onclick="hideRegisterForm()">
             {% csrf_token %}
