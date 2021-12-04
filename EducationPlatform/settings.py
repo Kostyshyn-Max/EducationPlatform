@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["ed-platform-space.herokuapp.com"]
+ALLOWED_HOSTS = ["ed-platform.space"]
 
 
 # Application definition
