@@ -93,7 +93,6 @@
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
     flex: none;
     order: 0;
-    align-self: stretch;
     flex-grow: 1;
     margin: 0 0.33rem;
 }
@@ -110,7 +109,6 @@
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
     flex: none;
     order: 1;
-    align-self: stretch;
     flex-grow: 1;
     margin: 0 0.33rem;
 }
