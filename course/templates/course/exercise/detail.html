@@ -4,6 +4,11 @@
 
 {% block topic %}<center>{{ exercise.name }}</center>{% endblock %}
 
+<link rel="stylesheet" href="{% static 'course/lib/codemirror.css'%}">
+<link rel="stylesheet" href="{% static 'course/theme/eclipse.css'%}">
+<script src="{% static 'course/lib/codemirror.js'%}"></script>
+<script src="{% static 'course/mode/python/python.js' %}"></script>
+
 {% block navbar-content %}
    <div class="dropdown username">
         <button class="drop-btn username">
