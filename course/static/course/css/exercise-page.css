@@ -94,6 +94,7 @@
     flex: none;
     order: 0;
     flex-grow: 1;
+    align-self: stretch;
     margin: 0 0.33rem;
 }
 .output{
@@ -108,6 +109,7 @@
     background: #257059;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
     flex: none;
+    align-self: stretch;
     order: 1;
     flex-grow: 1;
     margin: 0 0.33rem;
