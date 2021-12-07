@@ -3,7 +3,7 @@
   color: #10e734;
 }
 
-code{
+.code-example{
   color: #FFFEF2;
   display: block;
   margin: 1rem 1rem 1rem 10%;
@@ -17,6 +17,14 @@ code{
   background-color: #39876F;
   border-radius: 10px;
   padding: 0.3rem 0.3rem 0.3rem 4rem;
+}
+
+.code-func{
+  padding: 2px 5px;
+  background-color: #f3f4f6;
+  color: #000;
+  border: 1px solid #ecedf1;
+  border-radius: 3px;
 }
 
 table {
