@@ -87,10 +87,13 @@ def register_request(request):
         form = NewUserForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
-            UserCustom.objects.create(user=user, last_visited_page='')
-            messages.success(request, "Registration successful.")
-            return redirect('/lessons/1' if request.POST.get('next') == '' else request.POST.get('next'))
+            if len(form.get_user) > 15:
+                messages.error(request, "Ussername is too long")
+            else:
+                login(request, user)
+                UserCustom.objects.create(user=user, last_visited_page='')
+                messages.success(request, "Registration successful.")
+                return redirect('/lessons/1' if request.POST.get('next') == '' else request.POST.get('next'))
         #messages.error(request, form.errors)
         messages.error(request, "Unsuccessful registration. Invalid information.")
         popup = 'visible'
