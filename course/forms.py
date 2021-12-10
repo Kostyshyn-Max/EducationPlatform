@@ -16,7 +16,7 @@ class NewUserForm(UserCreationForm):
 		user = super(NewUserForm, self).save(commit=False)
 		user.email = self.cleaned_data['email']
 		if len(user.username) > 15:
-			self.add_error('Username', "username is too long")
+			self.add_error('username', "username is too long")
 		if commit:
 			user.save()
 		return user
