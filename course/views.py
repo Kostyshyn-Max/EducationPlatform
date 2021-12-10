@@ -87,7 +87,7 @@ def register_request(request):
         form = NewUserForm(request.POST)
         if form.is_valid():
             user = form.save()
-            if len(form.get_user) > 15:
+            if len(user.ussername) > 15:
                 messages.error(request, "Ussername is too long")
             else:
                 login(request, user)
