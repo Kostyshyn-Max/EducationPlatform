@@ -87,8 +87,6 @@ def register_request(request):
         form = NewUserForm(request.POST)
         if form.is_valid():
             user = form.save()
-            if user.get_username() > 15:
-                messages.error(request, "User name is too long")
             login(request, user)
             UserCustom.objects.create(user=user, last_visited_page='')
             messages.success(request, "Registration successful.")
