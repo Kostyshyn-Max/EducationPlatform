@@ -27,21 +27,17 @@
   border-radius: 3px;
 }
 
-table {
-  font-family: arial, sans-serif;
+td{
+  padding: 0.5rem;
+}
+
+table{
+  border: 1px solid #ddd;
   border-collapse: collapse;
-  width: 50%;
+}
+table thead {
+  background: #f5f5f5;
+  font-weight: 700;
 }
 
-th{
-  border: 1px solid #FFFEF2;
-  text-align: left;
-  padding: 8px;
-}
-
-td {
-  border: 1px solid #FFFEF2;
-  color: rgb(247, 211, 7);
-  text-align: left;
-  padding: 8px;
-}
+table  tr:nth-child(even){background-color: #f2f2f2;}
