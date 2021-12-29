@@ -26,14 +26,14 @@
   right: 13.89%;
   top: 2.5rem;
   bottom: 76.46%;
-  font-family: Roboto, serif;
+  font-family: Roboto Mono, serif;
   font-style: normal;
   font-weight: bold;
   font-size: 4rem;
   line-height: 8rem;
   text-align: center;
   z-index: -1;
-  color: #CCB90B;
+  color: #FFFEF2;
 
   text-shadow: 2px 4px 7px rgba(0, 0, 0, 0.25);
 }
@@ -44,14 +44,14 @@
   right: 13.89%;
   top: 23.54%;
   bottom: 0;
-  font-family: Roboto, serif;
+  font-family: Roboto Mono, serif;
   font-style: normal;
   font-weight: normal;
   font-size: 1.5rem;
   line-height: 2rem;
   text-align: justify;
   text-indent: 1.25rem;
-  color: #CCB90B;
+  color: #FFFEF2;
   z-index: -1;
   text-shadow: 2px 4px 7px rgba(0, 0, 0, 0.25);
 }
