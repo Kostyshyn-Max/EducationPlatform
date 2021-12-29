@@ -12,7 +12,6 @@
   right: 0;
   top: 2.5rem;
   bottom: 0;
-  opacity: 0.7;
   width: 100%;
   height: calc(100% - 2.5rem);
   background-repeat: no-repeat;
@@ -29,7 +28,7 @@
   font-family: Roboto Mono, serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 4rem;
+  font-size: 96px;
   line-height: 8rem;
   text-align: center;
   z-index: -1;
@@ -47,8 +46,8 @@
   font-family: Roboto Mono, serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: 36px;
+  line-height: 128.7%;
   text-align: justify;
   text-indent: 1.25rem;
   color: #FFFEF2;
