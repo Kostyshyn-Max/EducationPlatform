@@ -2,40 +2,47 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel='stylesheet' href="{% static 'course/css/navbar.css'%}">
-        <link rel='stylesheet' href="{% static 'course/css/main-page-body-content.css' %}">
-        <link rel='stylesheet' href="{% static 'course/css/forms.css' %}">
-        <link rel='stylesheet' href="{% static 'course/css/code.css' %}">
-        <link rel='stylesheet' href="{% static 'course/css/theory-page.css' %}">
-        <link rel='stylesheet' href="{% static 'course/css/exercise-page.css' %}">
-        <link rel='stylesheet' href="{% static 'course/css/main.css' %}">
-        <script src="{% static 'course/js/forms.js' %}"></script>
-        <script src="{% static 'course/js/lessons.js' %}"></script>
-        <script src="{% static 'course/js/code.js' %}"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href="{% static 'course/css/navbar.css'%}">
+    <link rel='stylesheet' href="{% static 'course/css/main-page-body-content.css' %}">
+    <link rel='stylesheet' href="{% static 'course/css/forms.css' %}">
+    <link rel='stylesheet' href="{% static 'course/css/code.css' %}">
+    <link rel='stylesheet' href="{% static 'course/css/theory-page.css' %}">
+    <link rel='stylesheet' href="{% static 'course/css/exercise-page.css' %}">
+    <link rel='stylesheet' href="{% static 'course/css/main.css' %}">
+    <script src="{% static 'course/js/forms.js' %}"></script>
+    <script src="{% static 'course/js/lessons.js' %}"></script>
+    <script src="{% static 'course/js/code.js' %}"></script>
 
-        {% block head-content %}{% endblock head-content %}
-        <title>{% block title %} {% endblock %}</title>
-    </head>
+    <!-- Code mirror -->
+    <script src="{% static 'course/lib/codemirror.js'%}"></script>
+    <script src="{% static 'course/hint/show-hint.js'%}"></script>
+    <script src="{% static 'course/hint/pythonHint.js'%}"></script>
+    <script src="{% static 'course/mode/python/python.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'course/theme/eclipse.css' %}">
+    <link rel="stylesheet" href="{% static 'course/lib/codemirror.css' %}">
+    <link rel="stylesheet" href="{% static 'course/hint/show-hint.css' %}">
 
-    <body>
-        <nav class="navbar">
-            <img class="logo" src="{% static 'course/image/Logo.svg' %}" alt="Logo">
-            <a class="navbar-title" href="/">EdPlatform</a>
-            <div class="line1"></div>
-            <div class="frame1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-            {% block navbar-content%}
-                
-            {% endblock %}
-            </nav>
-        {% block body-content %}
+    {% block head-content %}{% endblock head-content %}
+    <title>{% block title %} {% endblock %}</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <img class="logo" src="{% static 'course/image/Logo.svg' %}" alt="Logo">
+        <a class="navbar-title" href="/">EdPlatform</a>
+        <div class="frame1"></div>
+        <div class="line3"></div>
+        {% block navbar-content%}
 
         {% endblock %}
-    </body>
+    </nav>
+    {% block body-content %}
+
+    {% endblock %}
+</body>
 
 </html>

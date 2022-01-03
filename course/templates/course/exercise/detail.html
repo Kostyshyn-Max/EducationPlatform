@@ -2,7 +2,11 @@
 {% load static %}
 {% load tags %}
 
-{% block topic %}<center>{{ exercise.name }}</center>{% endblock %}
+{% block head-content %}
+    <link rel="icon" href="{% static 'course/image/LogoTitle.svg' %}" type = "image/x-icon">
+{% endblock %}
+
+{% block title %}{{ exercise.name }}{% endblock %}
 
 <link rel="stylesheet" href="{% static 'course/lib/codemirror.css'%}">
 <link rel="stylesheet" href="{% static 'course/theme/eclipse.css'%}">

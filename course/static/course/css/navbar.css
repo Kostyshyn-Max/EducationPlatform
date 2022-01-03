@@ -47,32 +47,6 @@ body{
     flex-grow: 0;
     margin: 0 0;
 }
-.line1{
-    position: static;
-    width: 2rem;
-    left: 10rem;
-    top: 1rem;
-    bottom: 2.5rem;
-    border: 1px solid #FFFEF2;
-    transform: rotate(90deg);
-    flex: none;
-    order: 2;
-    flex-grow: 0;
-    margin: 0 0;
-}
-.line2{
-    position: static;
-    width: 2rem;
-    left: 16.5rem;
-    top: 1rem;
-    bottom: 2.5rem;
-    border: 1px solid #FFFEF2;
-    transform: rotate(90deg);
-    flex: none;
-    order: 4;
-    flex-grow: 0;
-    margin: 0 0;
-}
 .line3{
     position: static;
     width: 2rem;
