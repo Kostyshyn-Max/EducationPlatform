@@ -38,7 +38,7 @@
       <div class="lessons-form">
         <h1 class="module-name">{{ current_lesson.module.name }}</h1>
         <div class="lessons-name">
-          {%for lesson in current_lesson.module.lessons.all %}
+          {%for lesson in current_lesson.module.lessons.all.order_by('id') %}
             <div class="module-content collapsable">
                 <div class="lesson-title-content">
                     <img class="collapse-icon {% if_current current_lesson.id lesson.id 'reversed' %}" src="{% static 'course/image/sort-down.svg' %}" alt="" ><h2 class="lesson-name {% is_lesson_completed lesson request.user %}">{{lesson.name}}</h2>
