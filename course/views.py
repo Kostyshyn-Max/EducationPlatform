@@ -55,7 +55,7 @@ def detail(request, lesson_id):
 
 
 def user_logout(request):
-    #request.user.user_base[0].last_visited_page = request.path
+    # request.user.user_base[0].last_visited_page = request.path
     request.user.user_base.update(
         last_visited_page=request.GET.get('path', ''))
     logout(request)
@@ -98,8 +98,8 @@ def register_request(request):
             login(request, user)
             UserCustom.objects.create(user=user, last_visited_page='')
             messages.success(request, "Registration successful.")
-            return redirect('/lessons/' + Lesson.objects.filter(module__id=1)[0].id if request.POST.get('next') == '' else request.POST.get('next'))
-        #messages.error(request, form.errors)
+            return redirect(f'/lessons/{Lesson.objects.filter(module__id=1)[0].id}' if request.POST.get('next') == '' else request.POST.get('next'))
+        # messages.error(request, form.errors)
         messages.error(
             request, "Unsuccessful registration. Invalid information.")
         popup = 'visible'
@@ -121,7 +121,7 @@ def login_request(request):
                 messages.info(
                     request, f"You are now logged in as {username}. ||||||| {request.POST.get('next')}")
                 # return redirect(request.POST.get('next', 'lessons/1?redirect=1'))
-                return redirect('/lessons/'+Lesson.objects.filter(module__id=1)[0].id+'?redirect=true' if request.POST.get('next') == '' else request.POST.get('next'))
+                return redirect(f'/lessons/{Lesson.objects.filter(module__id=1)[0].id}?redirect=true' if request.POST.get('next') == '' else request.POST.get('next'))
             else:
                 messages.error(request, "Invalid username or password.")
                 popup = 'visible'
