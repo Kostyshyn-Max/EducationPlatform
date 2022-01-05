@@ -103,6 +103,8 @@ def add_classes(value, arg):
 
 @register.simple_tag
 def int_to_Roman(num):
+    if num != 1:
+        num -= 4
     val = [
         1000, 900, 500, 400,
         100, 90, 50, 40,
