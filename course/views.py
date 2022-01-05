@@ -121,10 +121,7 @@ def login_request(request):
                 messages.info(
                     request, f"You are now logged in as {username}. ||||||| {request.POST.get('next')}")
                 # return redirect(request.POST.get('next', 'lessons/1?redirect=1'))
-
-                # ---{Lesson.objects.filter(module__id=1)[0].id}
-
-                return redirect(f'/lessons/32?redirect=true' if request.POST.get('next') == '' else request.POST.get('next'))
+                return redirect(f'/lessons/{Lesson.objects.filter(module__id=1)[0].id}?redirect=true' if request.POST.get('next') == '' else request.POST.get('next'))
             else:
                 messages.error(request, "Invalid username or password.")
                 popup = 'visible'
