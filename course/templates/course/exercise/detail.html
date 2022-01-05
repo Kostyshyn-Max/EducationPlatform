@@ -63,13 +63,22 @@
         <div class="code">
             <textarea id="code_editor" class="code-editor" rows="10" input=numbering id="code" name="code">{{inp_value}}</textarea>
             <script>
-              let editor = CodeMirror.fromTextArea(code_editor, {
-                lineNumbers: true,
-                mode: 'python',
-                theme: 'eclipse'
-              });
+                let editor = CodeMirror.fromTextArea(code_editor, {
+                    lineNumbers: true,
+                    mode: 'python',
+                    theme: 'eclipse'
+                });
 
-              editor.setSize('calc(100% - 1.5rem)', 'auto');
+                editor.on('inputRead', function onChange(editor, input) {
+                    if (input.text[0] === ';' || input.text[0] === ' ' || input.text[0] === ":") {
+                        return;
+                    }
+                    editor.showHint({
+                        hint: CodeMirror.pythonHint
+                    });
+                });
+                
+                editor.setSize('calc(100% - 1.5rem)', 'auto');
             </script>
         </div>
         <div class="right-sidebar">

@@ -22,8 +22,10 @@
         // If it's not a 'word-style' token, ignore the token.
 
         if (!/^[\w$_]*$/.test(token.string)) {
-            token = tprop = {start: cur.ch, end: cur.ch, string: "", state: token.state,
-                className: token.string == ":" ? "python-type" : null};
+            token = tprop = {
+                start: cur.ch, end: cur.ch, string: "", state: token.state,
+                className: token.string == ":" ? "python-type" : null
+            };
         }
 
         if (!context) var context = [];
@@ -32,17 +34,19 @@
         var completionList = getCompletions(token, context);
         completionList = completionList.sort();
         //prevent autocomplete for last word, instead show dropdown with one word
-        if(completionList.length == 1) {
+        if (completionList.length == 1) {
             completionList.push(" ");
         }
 
-        return {list: completionList,
+        return {
+            list: completionList,
             from: CodeMirror.Pos(cur.line, token.start),
-            to: CodeMirror.Pos(cur.line, token.end)};
+            to: CodeMirror.Pos(cur.line, token.end)
+        };
     }
 
-    CodeMirror.pythonHint = function(editor) {
-        return scriptHint(editor, pythonKeywordsU, function (e, cur) {return e.getTokenAt(cur);});
+    CodeMirror.pythonHint = function (editor) {
+        return scriptHint(editor, pythonKeywordsU, function (e, cur) { return e.getTokenAt(cur); });
     };
 
     var pythonKeywords = "and del from not while as elif global or with assert else if pass yield"
@@ -81,7 +85,7 @@
 
             if (obj.type == "variable")
                 base = obj.string;
-            else if(obj.type == "variable-3")
+            else if (obj.type == "variable-3")
                 base = ":" + obj.string;
 
             while (base != null && context.length)
