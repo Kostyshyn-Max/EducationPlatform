@@ -19,7 +19,7 @@
             </button>
             <div class="dropdown-content">
                 <a href="/logout/?path={{request.path}}">Вийти</a>
-                <a href="/lessons/1/">Перейти до завдань</a> 
+                <a href="/lessons/{% first_lesson_id 1 %}/">Перейти до завдань</a> 
             </div>
         </div>
     {% else %}

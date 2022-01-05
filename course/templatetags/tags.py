@@ -10,6 +10,7 @@ from datetime import datetime
 
 register = template.Library()
 
+
 @register.simple_tag
 def func1(str, input_output_list, exercise, user):
     sp = []
@@ -25,7 +26,7 @@ def func1(str, input_output_list, exercise, user):
                 return e
         s = f.getvalue()
         sp.append(s)
-        
+
     new_sp = []
     output = []
     for i in range(len(input_output_list)):
@@ -40,21 +41,27 @@ def func1(str, input_output_list, exercise, user):
     for i in range(len(new_sp)):
         if output[i] != new_sp[i]:
             if code != "":
-                attempt = Attempt.objects.create(exercise = exercise, code = code, pub_date = datetime.now(), result = False, user = user)
+                attempt = Attempt.objects.create(
+                    exercise=exercise, code=code, pub_date=datetime.now(), result=False, user=user)
             result = f'Failed at test {i + 1}'
             return result
     if code != "":
-        attempt = Attempt.objects.create(exercise = exercise, code = code, pub_date = datetime.now(), result = True, user = user)
+        attempt = Attempt.objects.create(
+            exercise=exercise, code=code, pub_date=datetime.now(), result=True, user=user)
 
     result = 'Conrgatulations!!! All tests are done'
     return result
 
+
 @register.simple_tag
 def is_completed(user, exercise):
-    return "completed" if len(Attempt.objects.filter(user = user, exercise_id = exercise.id, result = 1)) != 0 else ""
+    return "completed" if len(Attempt.objects.filter(user=user, exercise_id=exercise.id, result=1)) != 0 else ""
+
+
 @register.simple_tag
 def if_current(lesson1ID, lesson2ID, str):
     return mark_safe(str if lesson1ID == lesson2ID else "")
+
 
 @register.simple_tag
 def is_lesson_completed(lesson, user):
@@ -67,6 +74,7 @@ def is_lesson_completed(lesson, user):
 
     return "completed"
 
+
 @register.simple_tag
 def is_module_completed(module, user):
     if module.lessons.all().count() == 0:
@@ -77,6 +85,7 @@ def is_module_completed(module, user):
             return ""
 
     return "completed"
+
 
 @register.filter(name='add_classes')
 def add_classes(value, arg):
@@ -91,6 +100,7 @@ def add_classes(value, arg):
             css_classes.append(a)
     return value.as_widget(attrs={'class': ' '.join(css_classes)})
 
+
 @register.simple_tag
 def int_to_Roman(num):
     val = [
@@ -98,22 +108,23 @@ def int_to_Roman(num):
         100, 90, 50, 40,
         10, 9, 5, 4,
         1
-        ]
+    ]
     syb = [
         "M", "CM", "D", "CD",
         "C", "XC", "L", "XL",
         "X", "IX", "V", "IV",
         "I"
-        ]
+    ]
     roman_num = ''
     i = 0
-    while  num > 0:
+    while num > 0:
         for _ in range(num // val[i]):
             roman_num += syb[i]
             num -= val[i]
         i += 1
     return roman_num
 
+
 @register.simple_tag
 def first_lesson_id(module_id):
-    return Lesson.objects.filter(module__id = module_id)[0].id
+    return Lesson.objects.filter(module__id=module_id)[0].id
