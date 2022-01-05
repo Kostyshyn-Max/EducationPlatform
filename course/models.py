@@ -7,7 +7,7 @@ from django.contrib.auth import get_user_model
 
 class Module(models.Model):
     name = models.CharField(max_length=255)
-    id_for_roman = models.CharField(max_length=255, default="")
+    #id_for_roman = models.CharField(max_length=255, default="")
 
 
 class Lesson(models.Model):

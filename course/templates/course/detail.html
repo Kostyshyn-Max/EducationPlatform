@@ -28,7 +28,7 @@
         <div class="module-wrap">
             {% for module in module_list %}
               {% if current_lesson.module == module %}
-                <div class="module" ><a class="module-number {% is_module_completed module request.user %}" href="/lessons/{% first_lesson_id module.id_for_roman%}">{% int_to_Roman num=module.id %}</a></div>
+                <div class="module" ><a class="module-number {% is_module_completed module request.user %}" href="/lessons/{% first_lesson_id module.id - 5%}">{% int_to_Roman num=module.id %}</a></div>
               {% else %}  
                 <div class="module" style="background-color: #2f715b" ><a class="module-number {% is_module_completed module request.user %}" href="/lessons/{% first_lesson_id module.id%}">{% int_to_Roman num=module.id %}</a></div>
               {% endif %}
