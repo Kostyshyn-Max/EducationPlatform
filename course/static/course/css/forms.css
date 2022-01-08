@@ -206,3 +206,81 @@
     font-size: 12px;
     margin: 0;
 }
+
+@media screen and (max-width: 900px), screen and (max-height: 600px) {
+    /* Форма логіну для екранів менших за 900пх */
+    .login-form{
+        top: 15vh;
+        width: 15rem;
+    }
+    /* Тайтл логін форми для екранів менших за 900пх */
+    .login-form-title-text{
+        height: 3.75rem;
+        font-size: 0.75rem;
+        line-height: 1rem;
+    }
+    /* Хрестик іконки логіну для екранів менших за 900пх */
+    .form-close-icon{
+        width: 0.75rem;
+        height: 0.75rem;
+        right: 0.35rem;
+        top: 0.35rem;
+    }
+    /* Нижній текст логін форми */
+    .login-form-footer-text{
+        width: 10rem;
+        left: calc(50% - 14.8rem/2);
+        top: 85.71%;
+        bottom: 6.25%;
+        font-size: 0.5rem;
+        line-height: 200.06%;
+        margin: 0.5rem 0;
+    }
+    /* Поле вводу форми */
+    .form-input-field{
+        width: 13rem;
+        padding-left: 0.75rem;
+        height: 1.5rem;
+        font-size: 0.5rem;
+        line-height: 106.19%;
+        left: calc(50% - 16.75rem/2);
+        border-radius: 0.35rem;
+        margin: 0.5rem 0 0.1rem;
+    }
+    /* Кнопка продовжити */
+    .continue-button{
+        width: 13.375rem;
+        height: 1.75rem;
+        left: 2rem;
+        margin:  0.5rem 0;
+        font-size: 0.5rem;
+        color: #FFFEF2;
+        line-height: 0.75rem;
+    }
+    /* Форма реєстрації */
+    .register-form{
+        width: 15rem;
+        top: 15vh;
+    }
+
+    .register-form-title-text{
+        height: 3.75rem;
+        font-size: 0.75rem;
+        line-height: 1rem;
+    }
+    
+    .register-form-footer-text{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .register-form-footer-text{
+        width: 7rem;
+        left: calc(50% - 9.5rem/2);
+        top: 89.68%;
+        bottom: 4.52%;
+        font-size: 0.5rem;
+        line-height: 200.06%;
+        margin: 0.5rem 0;
+    }
+}
