@@ -19,6 +19,9 @@
   background-position: center;
   z-index: -1;
 }
+
+/* Титулка головної */
+
 .main-page-title{
   position: absolute;
   left: 13.89%;
@@ -33,9 +36,9 @@
   text-align: center;
   z-index: -1;
   color: #FFFEF2;
-
   text-shadow: 2px 4px 7px rgba(0, 0, 0, 0.25);
 }
+
 .main-page-text{
   position: absolute;
   display: flex;
@@ -53,4 +56,48 @@
   color: #FFFEF2;
   z-index: -1;
   text-shadow: 2px 4px 7px rgba(0, 0, 0, 0.25);
+}
+
+/* Розмір екрану 900 */
+
+@media screen and (max-width: 900px),
+        screen and (max-height: 600px) {
+  /* Текст головної сторінки для екранів ширина в яких менша за 900 */
+  .main-page-text {
+    font-size: 24px;
+  }
+
+  /* Титулка для екранів в яких ширина менша 600*/
+  .main-page-title{
+    font-size: 72px;
+    top: 1.75rem;
+  }
+
+  /* Задній фон для екранів менших за 900пх */
+  .main-page-background{
+    top: 1.75rem;
+    height: calc(100% - 1.75rem);
+  }
+}
+
+/* Розмір екрану 600 */
+
+
+@media screen and (max-width: 600px),
+        screen and (max-height: 400px) {
+  /* Текст головної сторінки для екранів ширина в яких менша за 600 */
+  .main-page-text {
+    font-size: 16px;
+  }
+
+  /* Титулка для екранів в яких ширина менша 600*/
+  .main-page-title{
+    font-size: 48px;
+    top: 1.25rem;
+  }
+  /* Задній фон для екранів менших за 600пх */
+  .main-page-background{
+    top: 1.25rem;
+    height: calc(100% - 1.25rem);
+  }
 }
