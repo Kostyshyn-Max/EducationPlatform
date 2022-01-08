@@ -12,6 +12,9 @@
 
 {% block navbar-content %}
     {% if request.user.is_authenticated %}
+        <div class="line"></div>
+        <a href="/lessons/{% first_lesson_id 1 %}/" class="redirect-to-lesson">Перейти до завдань</a> 
+        <div class="line"></div>
         <div class="dropdown username">
             <button class="drop-btn username">
                 <img src="{% static 'course/image/HumanLogo.svg' %} " alt="" style="width: 2rem; height: 2rem" height="1.5rem">
@@ -19,7 +22,6 @@
             </button>
             <div class="dropdown-content">
                 <a href="/logout/?path={{request.path}}">Вийти</a>
-                <a href="/lessons/{% first_lesson_id 1 %}/">Перейти до завдань</a> 
             </div>
         </div>
     {% else %}

@@ -47,6 +47,26 @@ body{
     flex-grow: 0;
     margin: 0 0;
 }
+
+.redirect-to-lesson{
+    color: #FFFEF2;
+    order: 1;
+}
+
+.line{
+    font-family: Roboto;
+    position: static;
+    width: 2rem;
+    height: 0;
+    left: 0rem;
+    top: 1rem;
+    border: 1px solid #FFFEF2;
+    transform: rotate(90deg);
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
 .line3{
     position: static;
     width: 2rem;
