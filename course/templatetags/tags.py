@@ -43,9 +43,7 @@ def func1(str, input_output_list, exercise, user):
             if code != "":
                 attempt = Attempt.objects.create(
                     exercise=exercise, code=code, pub_date=datetime.now(), result=False, user=user)
-            sys.stdin = StringIO(input_output_list[0].input)
-            f = StringIO()
-            result = f'Failed at test {i + 1} + inpValue {new_sp[0]}'
+            result = f'Failed at test {i + 1}'
             return result
     if code != "":
         attempt = Attempt.objects.create(
