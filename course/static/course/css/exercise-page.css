@@ -170,6 +170,7 @@
     flex-direction: row;
     padding: 0.4rem;
     position: absolute;
+    z-index: -1;
     width: calc(100% - 30rem);
     height: calc(100% - 4.5rem);
     left: 15.25rem;
