@@ -13,10 +13,13 @@ register = template.Library()
 
 @register.simple_tag
 def func1(str, input_output_list, exercise, user):
-    sp = []
+    program_code_output = []
     code = ''
     for i in range(len(input_output_list)):
-        sys.stdin = StringIO(input_output_list[i].input)
+        # last_symbol_code = ord(input_output_list[0].input[
+        #    input_output_list[0].input.find('\n') - 1])
+        new_input = input_output_list[i].input.replace('\r', '')
+        sys.stdin = StringIO(new_input)
         f = StringIO()
         with redirect_stdout(f):
             try:
@@ -25,25 +28,25 @@ def func1(str, input_output_list, exercise, user):
             except Exception as e:
                 return e
         s = f.getvalue()
-        sp.append(s)
+        program_code_output.append(s)
 
-    new_sp = []
-    output = []
+    good_program_code_output = []
+    expected_output = []
     for i in range(len(input_output_list)):
-        output.append(input_output_list[i].output)
-    for string in sp:
+        expected_output.append(input_output_list[i].output)
+    for string in program_code_output:
         new_element = re.sub(r'[ \t]+', ' ', string)
         new_element = re.sub(r'[ \t]*[\n\r]+[ \t]*', '\r\n', new_element)
         new_element = re.sub(r'[ \t]*[\n\r]+[ \t]*$', '', new_element)
         new_element = re.sub(r'^[ \t]*[\n\r]+[ \t]*', '', new_element)
-        new_sp.append(new_element)
+        good_program_code_output.append(new_element)
     result = ''
-    for i in range(len(new_sp)):
-        if output[i] != new_sp[i]:
+    for i in range(len(good_program_code_output)):
+        if expected_output[i] != good_program_code_output[i]:
             if code != "":
                 attempt = Attempt.objects.create(
                     exercise=exercise, code=code, pub_date=datetime.now(), result=False, user=user)
-            result = f'Failed at test {i + 1}, your code output {new_sp[i]}'
+            result = f'Failed at test {i + 1}, your code output {good_program_code_output[i]}'
             return result
     if code != "":
         attempt = Attempt.objects.create(
