@@ -27,6 +27,10 @@
     <link rel="stylesheet" href="{% static 'course/codemirror/codemirror.css' %}">
     <link rel="stylesheet" href="{% static 'course/hint/show-hint.css' %}">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+
     {% block head-content %}{% endblock head-content %}
     <title>{% block title %} {% endblock %}</title>
 </head>
